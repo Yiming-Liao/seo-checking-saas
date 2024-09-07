@@ -31,7 +31,9 @@ export async function POST() {
         const subscription = subscriptions.data[0];
 
         // 找不到訂閱資訊返回預設值
-        if (!subscription) return { status: false, remainingDays: 0 };
+        if (!subscription) {
+            return NextResponse.json({ status: false, remainingDays: 0 }, { status: 200 });
+        }
 
         // 是否訂閱中
         const status = subscription.status === 'active';
