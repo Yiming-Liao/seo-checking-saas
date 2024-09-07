@@ -1,0 +1,46 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// 簡單的 User 模型，用於未登入或未訂閱的用戶，依靠 IP 來判斷使用者
+model User {
+  id                   Int       @id @default(autoincrement())
+  ip                   String    @unique
+  main_last_using_time DateTime?
+  tool_last_using_time DateTime?
+  createdAt            DateTime  @default(now())
+}
+
+// 詳細的 SubscribedUser 模型，用於已登入並訂閱的用戶，依賴 email 來判斷使用者
+model SubscribedUser {
+  id               Int      @id @default(autoincrement())
+  email            String   @unique
+  signInType       String?
+  stripeCustomerId String?  @unique
+  subscription     Boolean  @default(false)
+  remainingDays    Int      @default(0)
+  createdAt        DateTime @default(now())
+
+  // 一個訂閱用戶可以有多個 Lighthouse 報告
+  lighthouseReports LighthouseReport[]
+}
+
+// LighthouseReport 模型，存儲 Lighthouse 測試的報告數據
+model LighthouseReport {
+  id                  Int      @id @default(autoincrement())
+  email               String?
+  url                 String
+  reportDesktop       Json
+  reportMobile        Json
+  reportDesktopCustom Json
+  reportMobileCustom  Json
+  createdAt           DateTime @default(now())
+
+  // 關聯至 SubscribedUser 模型 
+  SubscribedUser SubscribedUser? @relation(fields: [email], references: [email], onDelete: Cascade)
+}

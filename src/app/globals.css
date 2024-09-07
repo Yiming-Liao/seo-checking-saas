@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  /* border:1px solid gray */
+  @apply text-default;
+}
+
+/* 出場動畫 */
+.show-up {
+  animation: showUp 1s forwards;
+}
+@keyframes showUp {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.boxShadow {
+  box-shadow: rgba(171, 163, 155, 0.5) 0px 0px 15px;
+}
+
+.hoverBoxShadow:hover {
+  box-shadow: rgba(171, 163, 155, 0.5) 0px 0px 15px;
+}

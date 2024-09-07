@@ -1,0 +1,43 @@
+{
+    "Landing_Page": {
+        "heading_1": "Test Your",
+        "heading_2": "Scores"
+    },
+    "Navbar": {
+        "recent_report": "Recent report",
+        "dashboard": "dashboard",
+        "login": "login",
+        "logout": "Logout",
+        "subscribe": "Subscribe",
+        "subscribed_true": "Subscribed",
+        "subscribed_false": "Not Subscribed"
+    },
+    "Dashboard": {
+        "delete": "Delete"
+    },
+    "Report": {
+        "thanks_for_using": "Thank you for using this website, below is the full report for the target URL. 🙂",
+        "target_url": "Target URL",
+        "score": "Score",
+        "performance": "Performance",
+        "accessibility": "Accessibility",
+        "best_practices": "Best Practices",
+        "get_full_report": "Get the full report of Performance, Accessibility, Best Practices:"
+    },
+    "ReportDetails": {
+        "http_status_code": "The HTTP Status Code is a server response indicating the status of a request. A 200 status means the request was successful, while codes like 404 or 500 indicate errors.",
+        "meta_charset": "The Meta Charset tag specifies the character encoding for the HTML document. UTF-8 is the most widely used and recommended encoding.",
+        "meta_viewport": "The Meta Viewport tag controls the layout on mobile devices, ensuring your website is responsive and properly scaled across different screen sizes.",
+        "link_canonical": "The Canonical Link tag tells search engines the preferred URL of a web page, helping to avoid duplicate content issues.",
+        "document_title": "The Document Title is the title of the web page displayed in the browser tab and in search engine results. It should be concise and descriptive.",
+        "meta_description": "The Meta Description tag provides a brief summary of the page content, often displayed in search engine results below the title.",
+        "link_text": "Link Text is the clickable text in a hyperlink. It should be descriptive and relevant to the linked content for better accessibility and SEO.",
+        "is_crawlable": "Determines whether a webpage is accessible to search engine crawlers. A crawlable page can be indexed and ranked in search results.",
+        "hreflang_tags": "hreflang Tags indicate the language and regional targeting of a webpage, helping search engines serve the correct version of the page to users.",
+        "crawlable_anchors": "Crawlable Anchors refer to links on a page that search engines can follow. Ensuring anchors are crawlable improves site navigation and SEO.",
+        "image_alt": "The Image Alt attribute provides a text description of an image, which helps search engines understand the content and improves accessibility for visually impaired users.",
+        "open_graph": "Open Graph tags define how your content appears when shared on social media platforms, including the title, description, and image.",
+        "twitter_card": "Twitter Card tags allow you to control how your web page is displayed when shared on Twitter, including a summary, large image, or video."
+    },
+    "": {}
+}

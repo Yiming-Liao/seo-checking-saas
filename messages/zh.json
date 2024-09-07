@@ -1,0 +1,43 @@
+{
+    "Landing_Page": {
+        "heading_1": "測試您的",
+        "heading_2": "分數"
+    },
+    "Navbar": {
+        "recent_report": "最近報告",
+        "dashboard": "主控版",
+        "login": "登入",
+        "logout": "登出",
+        "subscribe": "訂閱",
+        "subscribed_true": "已訂閱",
+        "subscribed_false": "已訂閱"
+    },
+    "Dashboard": {
+        "delete": "刪除"
+    },
+    "Report": {
+        "thanks_for_using": "感謝您使用本網站，以下是該網站的檢測報告🙂",
+        "target_url": "目標網址",
+        "score": "分數",
+        "performance": "效能",
+        "accessibility": "無障礙",
+        "best_practices": "最佳實踐",
+        "get_full_report": "取得關於效能、無障礙以及最佳實踐的完整檢測報告:"
+    },
+    "ReportDetails": {
+        "http_status_code": "HTTP 狀態碼是伺服器回應的一個指標，表示請求的狀態。200 狀態碼表示請求成功，而 404 或 500 則表示發生錯誤。",
+        "meta_charset": "Meta Charset 標籤指定了 HTML 文件的字符編碼。UTF-8 是最常用且推薦的編碼方式。",
+        "meta_viewport": "Meta Viewport 標籤控制移動設備上的佈局，確保您的網站能夠響應並適應不同的屏幕尺寸。",
+        "link_canonical": "Canonical Link 標籤告訴搜尋引擎首選的網頁 URL，有助於避免重複內容問題。",
+        "document_title": "Document Title 是顯示在瀏覽器標籤頁和搜尋引擎結果中的網頁標題。它應該簡潔且具描述性。",
+        "meta_description": "Meta Description 標籤提供頁面內容的簡短摘要，通常顯示在搜尋引擎結果中標題的下方。",
+        "link_text": "Link Text 是超連結中的可點擊文字。它應該具有描述性並與連結內容相關，以提高可訪問性和 SEO。",
+        "is_crawlable": "確定網頁是否可供搜尋引擎爬蟲訪問。可爬取的頁面可以被索引並在搜尋結果中排名。",
+        "hreflang_tags": "hreflang 標籤表示網頁的語言和區域定位，有助於搜尋引擎向用戶提供正確版本的網頁。",
+        "crawlable_anchors": "Crawlable Anchors 是指搜尋引擎可以跟蹤的頁面上的連結。確保連結可爬取有助於提升網站導航和 SEO。",
+        "image_alt": "Image Alt 屬性提供圖片的文字描述，有助於搜尋引擎理解內容，並提高視覺障礙用戶的可訪問性。",
+        "open_graph": "Open Graph 標籤定義了您的內容在社交媒體平台上分享時的顯示方式，包括標題、描述和圖片。",
+        "twitter_card": "Twitter Card 標籤讓您可以控制網頁在 Twitter 上分享時的顯示方式，包括摘要、大圖片或影片。"
+    },
+    "": {}
+}
