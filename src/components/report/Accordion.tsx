@@ -1,7 +1,12 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 
-const Accordion = ({ head, body }) => {
+interface AccordionProps {
+    head: React.ReactNode;
+    body: React.ReactNode;
+}
+
+const Accordion: React.FC<AccordionProps> = ({ head, body }) => {
     const [isOpen, setIsOpen] = useState<boolean>(false);
     const accordionBodyRef = useRef<HTMLDivElement | null>(null);
 
