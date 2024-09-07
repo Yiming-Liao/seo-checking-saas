@@ -144,4 +144,29 @@ const ReportCard = ({ report }: any) => {
         </main>
     )
 }
-export default ReportCard
+export default ReportCard;
+
+
+interface Node {
+    snippet: string;
+}
+
+interface SubItem {
+    relatedNode: Node;
+}
+
+interface TargetSize {
+    node: Node;
+    subItems: {
+        items: SubItem[];
+    };
+}
+
+interface SeoReport {
+    fontSize: boolean;
+    targetSize: TargetSize[] | null;
+}
+
+interface MobileReport {
+    seo: SeoReport;
+}
