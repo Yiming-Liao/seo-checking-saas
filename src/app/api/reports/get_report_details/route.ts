@@ -23,8 +23,12 @@ export async function GET(request: NextRequest) {
 
         if (!reports) return NextResponse.json({ error: "Cannot find report with the id." }, { status: 404 })
 
-        const reportDesktop = reports.reportDesktop;
-        const reportMobile = reports.reportMobile;
+        const reportDesktop: Report = reports.reportDesktop as Report;
+        const reportMobile: Report = reports.reportMobile as Report;
+
+        // 確認 audits 是否存在
+        const desktopAudits = reportDesktop?.audits ?? {};
+        const mobileAudits = reportMobile?.audits ?? {};
 
         // Desktop Audits
         // 性能的指標 (只有分數)
@@ -42,22 +46,22 @@ export async function GET(request: NextRequest) {
         // SEO 指標
         const seoMetricsDesktop = {
             score: reportDesktop?.categories?.seo?.score || 'N/A',
-            httpStatusCode: reportDesktop?.audits['http-status-code']?.score === 1 || false,
-            documentTitle: reportDesktop?.audits['document-title']?.score === 1 || false,
-            metaDescription: reportDesktop?.audits['meta-description']?.score === 1 || false,
-            linkText: reportDesktop?.audits['link-text']?.score === 1 || false,
-            hreflangTags: reportDesktop?.audits['hreflang']?.score === 1 || false,
-            canonicalLink: reportDesktop?.audits['canonical']?.score === 1 || false,
-            fontSize: reportDesktop?.audits['font-size']?.score === 1 || false,
+            httpStatusCode: desktopAudits['http-status-code']?.score === 1 || false,
+            documentTitle: desktopAudits['document-title']?.score === 1 || false,
+            metaDescription: desktopAudits['meta-description']?.score === 1 || false,
+            linkText: desktopAudits['link-text']?.score === 1 || false,
+            hreflangTags: desktopAudits['hreflang']?.score === 1 || false,
+            canonicalLink: desktopAudits['canonical']?.score === 1 || false,
+            fontSize: desktopAudits['font-size']?.score === 1 || false,
 
-            isCrawlable: reportDesktop?.audits['is-crawlable']?.score === 1 || false, // do details
-            crawlableAnchors: reportDesktop?.audits['crawlable-anchors']?.details?.items || "pass:[]",
-            imageAlt: reportDesktop?.audits['image-alt']?.details?.items || "pass:[]",
-            targetSize: reportDesktop?.audits['target-size']?.details?.items || "pass:[]",
+            isCrawlable: desktopAudits['is-crawlable']?.score === 1 || false, // do details
+            crawlableAnchors: desktopAudits['crawlable-anchors']?.details?.items || "pass:[]",
+            imageAlt: desktopAudits['image-alt']?.details?.items || "pass:[]",
+            targetSize: desktopAudits['target-size']?.details?.items || "pass:[]",
         };
         // 畫面預覽
         const additionalMetricsDesktop = {
-            screenshotThumbnail: reportDesktop?.audits['screenshot-thumbnails']?.details?.items[7]?.data || 'N/A',
+            screenshotThumbnail: desktopAudits['screenshot-thumbnails']?.details?.items[7]?.data || 'N/A',
         }
 
 
@@ -77,22 +81,22 @@ export async function GET(request: NextRequest) {
         // SEO 指標
         const seoMetricsMobile = {
             score: reportMobile?.categories?.seo?.score || 'N/A',
-            httpStatusCode: reportMobile?.audits['http-status-code']?.score === 1 || false,
-            documentTitle: reportMobile?.audits['document-title']?.score === 1 || false,
-            metaDescription: reportMobile?.audits['meta-description']?.score === 1 || false,
-            linkText: reportMobile?.audits['link-text']?.score === 1 || false,
-            hreflangTags: reportMobile?.audits['hreflang']?.score === 1 || false,
-            canonicalLink: reportMobile?.audits['canonical']?.score === 1 || false,
-            fontSize: reportMobile?.audits['font-size']?.score === 1 || false,
+            httpStatusCode: mobileAudits['http-status-code']?.score === 1 || false,
+            documentTitle: mobileAudits['document-title']?.score === 1 || false,
+            metaDescription: mobileAudits['meta-description']?.score === 1 || false,
+            linkText: mobileAudits['link-text']?.score === 1 || false,
+            hreflangTags: mobileAudits['hreflang']?.score === 1 || false,
+            canonicalLink: mobileAudits['canonical']?.score === 1 || false,
+            fontSize: mobileAudits['font-size']?.score === 1 || false,
 
-            isCrawlable: reportMobile?.audits['is-crawlable']?.score === 1 || false, // do details
-            crawlableAnchors: reportMobile?.audits['crawlable-anchors']?.details?.items || "pass:[]",
-            imageAlt: reportMobile?.audits['image-alt']?.details?.items || "pass:[]",
-            targetSize: reportMobile?.audits['target-size']?.details?.items || "pass:[]",
+            isCrawlable: mobileAudits['is-crawlable']?.score === 1 || false, // do details
+            crawlableAnchors: mobileAudits['crawlable-anchors']?.details?.items || "pass:[]",
+            imageAlt: mobileAudits['image-alt']?.details?.items || "pass:[]",
+            targetSize: mobileAudits['target-size']?.details?.items || "pass:[]",
         };
         // 畫面預覽
         const additionalMetricsMobile = {
-            screenshotThumbnail: reportMobile?.audits['screenshot-thumbnails']?.details?.items[7]?.data || 'N/A',
+            screenshotThumbnail: mobileAudits['screenshot-thumbnails']?.details?.items[7]?.data || 'N/A',
         }
 
 
@@ -132,4 +136,20 @@ export async function GET(request: NextRequest) {
         }
     }
 
+}
+
+
+interface Report {
+    categories?: {
+        performance?: { score: number };
+        accessibility?: { score: number };
+        "best-practices"?: { score: number };
+        seo?: { score: number };
+    };
+    audits?: {
+        [key: string]: {
+            score: number;
+            details?: { items: any[] };
+        };
+    };
 }
