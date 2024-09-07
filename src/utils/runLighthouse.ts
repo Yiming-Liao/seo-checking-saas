@@ -12,7 +12,8 @@ export default async function runLighthouse(url: string) {
     const email = authSession?.user.email || "";
 
     // 定義報告保存的根目錄，並根據 email 創建子目錄
-    const reportsDir = path.join(process.cwd(), 'reports', email);
+    // const reportsDir = path.join(process.cwd(), 'reports', email);
+    const reportsDir = path.join('/tmp', 'reports', email);
 
     // 如果目錄不存在，則創建目錄
     if (!fs.existsSync(reportsDir)) {

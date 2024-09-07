@@ -7,7 +7,8 @@ import runCustomCheck from '@/utils/customCheck/runCustomCheck';
 export default async function runLighthouseGuest(url: string) {
 
     // 定義報告保存的根目錄，並根據 email 創建子目錄
-    const reportsDir = path.join(process.cwd(), 'reports', 'guests');
+    // const reportsDir = path.join(process.cwd(), 'reports', 'guests');
+    const reportsDir = path.join('/tmp', 'reports', 'guests');
 
     // 如果目錄不存在，則創建目錄
     if (!fs.existsSync(reportsDir)) {
