@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useQuery } from '@tanstack/react-query';
 
-const getReport = async (reportId) => {
+const getReport = async (reportId: string) => {
     const response = await axios.get(`/api/reports/get_report_details?reportId=${reportId}`);
     console.log(`Here: ${response.data.reportInfo}`);
 
@@ -13,7 +13,7 @@ const getReport = async (reportId) => {
     }
 };
 
-export const useGetReport = (reportId) => {
+export const useGetReport = (reportId: string) => {
     return useQuery({
         queryKey: ['report', reportId],
         queryFn: () => getReport(reportId),
